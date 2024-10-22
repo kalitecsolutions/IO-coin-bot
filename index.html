@@ -63,7 +63,7 @@
 
         .balance {
             font-size: 3rem;
-            margin-bottom: 10px;
+            margin-bottom: 40px;
         }
 
         .stats-section {
@@ -198,12 +198,12 @@
             }
 
             .hamster-frame {
-                width: 200px;
-                height: 200px;
+                width: 250px;
+                height: 250px;
             }
 
             .bottom-buttons button {
-                padding: 7px 10px;
+                padding: 9px 12px;
                 font-size: 1rem;
             }
         }
@@ -224,7 +224,7 @@
 
     <!-- Main Section -->
     <div class="main-section">
-        <div class="balance">$<span id="balance">1000</span></div>
+        <div class="balance">$IO <span id="balance">1000</span></div>
 
         <!-- Hamster Image -->
         <div class="hamster-frame glow">
@@ -260,7 +260,7 @@
 
         // Add event listener to the hamster image
         document.getElementById('hamster').addEventListener('click', function() {
-            updateBalance(0.00025); // Increase balance by 0.25 when hamster is clicked
+            updateBalance(0.00025); // Increase balance by 0.00025 when hamster is clicked
         });
 
         // Add interactivity to bottom buttons (Optional)
