@@ -241,37 +241,38 @@
     </div>
 
     <script>
-        // Function to get balance from localStorage
-        function getBalance() {
-            let balance = localStorage.getItem('balance');
-            return balance ? parseFloat(balance) : 0; // Default balance if none exists
+    // Function to initialize balance in localStorage if it doesn't exist
+    function initializeBalance() {
+        if (localStorage.getItem('balance') === null) {
+            localStorage.setItem('balance', '1000'); // Set an initial balance
         }
+    }
 
-        // Function to update balance in localStorage and on the page
-        function updateBalance(amount) {
-            let balance = getBalance();
-            balance += amount;
-            localStorage.setItem('balance', balance.toFixed(2));
-            document.getElementById('balance').textContent = balance.toLocaleString();
-        }
+    // Function to get balance from localStorage
+    function getBalance() {
+        let balance = localStorage.getItem('balance');
+        return balance ? parseFloat(balance) : 0;
+    }
 
-        // Load the initial balance
+    // Function to update balance in localStorage and on the page
+    function updateBalance(amount) {
+        let balance = getBalance();
+        balance += amount;
+        localStorage.setItem('balance', balance.toFixed(5)); // Store balance with 5 decimal precision
+        document.getElementById('balance').textContent = parseFloat(balance).toLocaleString();
+    }
+
+    // Load the initial balance on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeBalance(); // Initialize the balance if not set
         document.getElementById('balance').textContent = getBalance().toLocaleString();
+    });
 
-        // Add event listener to the hamster image
-        document.getElementById('hamster').addEventListener('click', function() {
-            updateBalance(0.00025); // Increase balance by 0.00025 when hamster is clicked
-        });
-
-        // Add interactivity to bottom buttons (Optional)
-        document.getElementById('homeButton').addEventListener('click', () => {
-            alert("Home button clicked");
-        });
-
-        document.getElementById('earnButton').addEventListener('click', () => {
-            alert("Earn button clicked");
-        });
-    </script>
+    // Add event listener to the hamster image
+    document.getElementById('hamster').addEventListener('click', function() {
+        updateBalance(0.00025); // Increase balance by 0.00025 when hamster is clicked
+    });
+</script>
 
 </body>
 </html>
