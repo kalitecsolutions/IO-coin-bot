@@ -234,9 +234,17 @@
         <button id="homeButton">Home</button>
         <button id="earnButton">Earn</button>
         <button id="roadmapButton">Roadmap</button>
+        <button id="walletButton">wallet</button>
     </div>
 
     <script>
+
+// Add event listener for the Earn button to navigate to earn.html
+document.getElementById('homeButton').addEventListener('click', function() {
+    window.location.href = 'index.html'; // Redirect to earn.html when clicked
+});
+
+        
         // Function to get balance from localStorage
         function getBalance() {
             let balance = localStorage.getItem('balance');
