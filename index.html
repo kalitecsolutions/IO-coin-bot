@@ -21,11 +21,13 @@
             justify-content: space-between;
             align-items: center;
             margin: 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
 
         .profile-section {
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
         }
 
         .profile-pic {
@@ -140,10 +142,83 @@
             color: black;
             font-size: 1rem;
             font-weight: bold;
+            width: 22%; /* Make buttons take up more space on smaller screens */
         }
 
         .glow {
             box-shadow: 0 0 20px #ff4757;
+        }
+
+        /* Media Queries for Responsiveness */
+
+        /* For tablets and smaller laptops */
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .coins-box {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .stats-section {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            .stats-box {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .balance {
+                font-size: 2rem;
+            }
+        }
+
+        /* For phones */
+        @media (max-width: 576px) {
+            .top-bar {
+                padding: 10px;
+            }
+
+            .profile-pic {
+                width: 50px;
+                height: 50px;
+            }
+
+            .profile-name {
+                font-size: 1rem;
+            }
+
+            .coins-box {
+                padding: 10px;
+                font-size: 0.8rem;
+            }
+
+            .coins-box span {
+                font-size: 1.2rem;
+            }
+
+            .balance {
+                font-size: 1.5rem;
+            }
+
+            .stats-box p, .stats-box span {
+                font-size: 0.9rem;
+            }
+
+            .hamster-frame {
+                width: 150px;
+                height: 150px;
+            }
+
+            .bottom-buttons button {
+                padding: 8px 10px;
+                width: 23%; /* Adjust button width for smaller screens */
+            }
         }
     </style>
 </head>
