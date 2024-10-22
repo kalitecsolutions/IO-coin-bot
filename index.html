@@ -217,7 +217,7 @@
             <img src="profile.png" alt="Profile" class="profile-pic">
         </div>
         <div class="coin-balance">
-            <p>Per Tap +0.00025</p>
+            <p>Per Tap +0.0025</p>
         </div>
         <img src="binance.png" alt="Binance" class="binance-logo">
     </div>
@@ -236,85 +236,43 @@
     <div class="bottom-buttons">
         <button id="homeButton">Home</button>
         <button id="earnButton">Earn</button>
-        <button id="inviteButton">Invite</button>
         <button id="roadmapButton">Roadmap</button>
     </div>
 
-    <!-- Modal for showing referral code -->
-    <div id="referralModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); color:white; text-align:center; padding-top:100px;">
-        <p>Your Referral Code: <strong id="referralCode"></strong></p>
-        <button onclick="document.getElementById('referralModal').style.display='none';">Close</button>
-    </div>
-
-    <!-- Input section for simulating referral -->
-    <div style="text-align:center; margin-top:30px;">
-        <input type="text" id="inputReferralCode" placeholder="Enter Referral Code">
-        <button id="useReferralButton">Use Referral Code</button>
-    </div>
-
     <script>
-        // Function to initialize balance in localStorage if it doesn't exist
-        function initializeBalance() {
-            if (localStorage.getItem('balance') === null) {
-                localStorage.setItem('balance', '1000'); // Set an initial balance
-            }
+    // Function to initialize balance in localStorage if it doesn't exist
+    function initializeBalance() {
+        if (localStorage.getItem('balance') === null) {
+            localStorage.setItem('balance', '1000'); // Set an initial balance
         }
+    }
 
-        // Function to get balance from localStorage
-        function getBalance() {
-            let balance = localStorage.getItem('balance');
-            return balance ? parseFloat(balance) : 0;
-        }
+    // Function to get balance from localStorage
+    function getBalance() {
+        let balance = localStorage.getItem('balance');
+        return balance ? parseFloat(balance) : 0;
+    }
 
-        // Function to update balance in localStorage and on the page
-        function updateBalance(amount) {
-            let balance = getBalance();
-            balance += amount;
-            localStorage.setItem('balance', balance.toFixed(2)); // Store balance with 2 decimal precision
-            document.getElementById('balance').textContent = balance.toLocaleString();
-        }
+    // Function to update balance in localStorage and on the page
+    function updateBalance(amount) {
+        let balance = getBalance();
+        balance += amount;
+        localStorage.setItem('balance', balance.toFixed(5)); // Store balance with 5 decimal precision
+        document.getElementById('balance').textContent = parseFloat(balance).toLocaleString();
+    }
 
-        // Function to generate a referral code
-        function generateReferralCode() {
-            let referralCode = 'IO' + Math.random().toString(36).substring(2, 8).toUpperCase(); // Random 6-character code
-            localStorage.setItem('referralCode', referralCode); // Store in localStorage
-            return referralCode;
-        }
+    // Load the initial balance on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeBalance(); // Initialize the balance if not set
+        document.getElementById('balance').textContent = getBalance().toLocaleString();
+    });
 
-        // Function to check referral code
-        function useReferralCode(enteredCode) {
-            let storedCode = localStorage.getItem('referralCode');
-            if (enteredCode === storedCode) {
-                updateBalance(1); // Award 1 point for a valid referral
-                alert("Referral successful! You've earned 1 point.");
-            } else {
-                alert("Invalid referral code.");
-            }
-        }
+    // Add event listener to the hamster image
+    document.getElementById('hamster').addEventListener('click', function() {
+        updateBalance(0.0025); // Increase balance by 0.0025 when hamster is clicked
+    });
+</script>
 
-        // Load the initial balance on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeBalance(); // Initialize the balance if not set
-            document.getElementById('balance').textContent = getBalance().toLocaleString();
-        });
 
-        // Add event listener to the hamster image
-        document.getElementById('hamster').addEventListener('click', function() {
-            updateBalance(0.0025); // Increase balance by 0.0025 when hamster is clicked
-        });
-
-        // Add event listener to the invite button
-        document.getElementById('inviteButton').addEventListener('click', function() {
-            let referralCode = generateReferralCode(); // Generate a referral code
-            document.getElementById('referralCode').textContent = referralCode;
-            document.getElementById('referralModal').style.display = 'block'; // Show the modal with referral code
-        });
-
-        // Add event listener to the use referral button
-        document.getElementById('useReferralButton').addEventListener('click', function() {
-            let enteredCode = document.getElementById('inputReferralCode').value;
-            useReferralCode(enteredCode); // Check the entered referral code
-        });
-    </script>
 </body>
 </html>
