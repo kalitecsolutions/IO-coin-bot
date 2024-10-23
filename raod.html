@@ -94,6 +94,69 @@
             font-size: 1.4rem;
             font-weight: bold;
         }
+        
+/* Styling for each month section */
+.month-section {
+    background-color: #23232a;
+    border-radius: 20px;
+    margin: 20px 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    color: white;
+}
+
+/* Adding gradient and border effects to the left */
+.month-section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background: linear-gradient(to bottom, #00ffae, #00baff);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+/* Styling for the month title */
+.month-section h2 {
+    font-size: 2rem;
+    color: #cccccc;
+}
+
+/* Styling for the list */
+.month-section ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.month-section ul li {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #d3f9e8; /* light green color for list items */
+}
+
+/* Styling for the image */
+.month-section img {
+    height: 100px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .month-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .month-section img {
+        margin-top: 10px;
+        margin-left: 0;
+    }
 
         /* Hamster Image Section */
         .hamster-frame {
@@ -228,15 +291,16 @@
 
   <!-- Main Section -->
 <div class="main-section">
-    <div class="balance">
-    <h2>March 2024</h2>
-    <ul>
-        <li>Basic game</li>
-        <li>Mining updates</li>
-        <li>Earn tasks</li>
-    </ul> </div>
+    <div class="month-section">
+        <h2>March 2024</h2>
+        <ul>
+            <li>Basic game</li>
+            <li>Mining updates</li>
+            <li>Earn tasks</li>
+        </ul>
+    </div>
     
-<div class="balance">
+<div class="month-section">
     <h2>April 2024</h2>
     <ul>
         <li>Referral system</li>
@@ -244,7 +308,7 @@
         <li>Daily rewards</li>
     </ul> </div> 
     
- <div class="balance">
+ <div class="month-section">
     <h2>May 2024</h2>
     <ul>
         <li>Special cards</li>
@@ -252,7 +316,7 @@
         <li>TON blockchain announcement</li>
     </ul></div>
 
-     <div class="balance">
+     <div class="month-section">
     <h2>June 2024</h2>
     <ul>
         <li>On-chain infrastructure development</li>
@@ -260,7 +324,7 @@
         <li>Web 3 pre-listing Quest</li>
     </ul></div>
 
-     <div class="balance">
+     <div class="month-section">
     <h2>July 2024</h2>
     <ul>
         <li>Characters and skins</li>
@@ -268,14 +332,14 @@
         <li>Tech solution for the largest-ever AirDrop</li>
     </ul></div>
 
-     <div class="balance">
+     <div class="month-section">
     <h2>August 2024</h2>
     <ul>
         <li>Achievements</li>
         <li>Gaming platform launch</li>
     </ul></div>
 
-     <div class="balance">
+     <div class="month-section>
     <h2>September 2024</h2>
     <ul>
         <li>The Interlude season launch</li>
