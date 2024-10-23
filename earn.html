@@ -3,288 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IO Coin</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Hamster Kombat Bot</title>
     <style>
-        body {
-            background-color: #1c1c1c;
-            color: white;
-            font-family: 'Arial', sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Top Section */
-        .top-bar {
-            background-color: #3d3d3d;
-            border-radius: 15px;
+        body {
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
             padding: 20px;
+        }
+
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid gray;
         }
 
-        .profile-section {
-            display: flex;
-            align-items: center;
+        .back-arrow, .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
         }
 
-        .profile-pic {
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
+        .title h1 {
+            font-size: 18px;
         }
 
-        .binance-logo {
-            width: 50px;
-            height: 50px;
+        .title p {
+            font-size: 14px;
+            color: gray;
         }
 
-        /* Coin Balance in Top Bar */
-        .coin-balance {
-            background-color: #2c2c2c;
-            border-radius: 10px;
-            padding: 15px;
+        .balance-section {
             text-align: center;
-            width: 200px;
-            font-size: 1rem;
+            padding: 20px 0;
+            border-bottom: 1px solid gray;
         }
 
-        .coin-balance span {
-            font-size: 1.6rem;
-            font-weight: bold;
-        }
-
-        /* Main Section */
-        .main-section {
-            text-align: center;
-            margin-top: 50px;
+        .balance-label {
+            font-size: 14px;
+            color: gray;
         }
 
         .balance {
-            background-color: #ffdf00;
-            font-size: 1rem;
-            border-radius: 15px;
-            padding: 15px;
-            text-align: center;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .stats-section {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        .balance .currency-icon {
+            margin-right: 10px;
+        }
+
+        .boosters {
+            padding: 20px 0;
+        }
+
+        .booster-item {
+            display: flex;
+            align-items: center;
             justify-content: space-between;
-            padding: 0 40px;
-            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid gray;
+            cursor: pointer;
         }
 
-        .stats-box {
-            background-color: #2c2c2c;
-            border-radius: 10px;
-            padding: 15px;
-            width: 30%;
-            text-align: center;
+        .booster-item:last-child {
+            border-bottom: none;
         }
 
-        .stats-box p {
-            margin: 0;
-            font-size: 1rem;
+        .booster-icon {
+            font-size: 24px;
         }
 
-        .stats-box span {
-            font-size: 1.4rem;
-            font-weight: bold;
+        .booster-info {
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Hamster Image Section */
-        .hamster-frame {
-            margin-top: 20px;
-            border: 5px solid #ff4757;
-            border-radius: 50%;
-            padding: 10px;
-            width: 200px;
-            height: 200px;
-            margin: auto;
+        .booster-name {
+            font-size: 16px;
         }
 
-        .hamster-frame img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
+        .booster-status, .booster-cost {
+            font-size: 14px;
+            color: gray;
         }
 
-        /* Bottom Section */
-        .bottom-buttons {
-            background-color: rgba(255, 255, 255, 0.1);
-            position: fixed;
-            bottom: 20px;
-            width: 100%;
+        footer {
             display: flex;
             justify-content: space-around;
-            padding: 10px;
-            border-radius: 50px;
+            padding: 20px 0;
+            border-top: 1px solid gray;
         }
 
-        .bottom-buttons button {
-            background-color: #ffc107;
-            border: none;
-            border-radius: 50px;
-            padding: 10px 20px;
-            color: black;
-            font-size: 1rem;
-            font-weight: bold;
+        .footer-item {
+            font-size: 14px;
+            cursor: pointer;
         }
 
-        .glow {
-            box-shadow: 0 0 20px #ff4757;
+        /* Disabled state styling */
+        .disabled {
+            opacity: 0.5;
+            pointer-events: none;
         }
 
-        /* Media Queries for Scaling the Layout */
-        @media (max-width: 768px) {
-            .profile-pic {
-                width: 50px;
-                height: 50px;
-            }
-
-            .coin-balance {
-                padding: 10px;
-                font-size: 4rem;
-            }
-
-            .coin-balance span {
-                font-size: 4rem;
-            }
-
-            .balance {
-                font-size: 4rem;
-            }
-
-            .stats-box p, .stats-box span {
-                font-size: 0.9rem;
-            }
-
-            .hamster-frame {
-                width: 150px;
-                height: 150px;
-            }
-
-            .bottom-buttons button {
-                padding: 8px 10px;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* For smaller phones */
-        @media (max-width: 576px) {
-            .profile-pic {
-                width: 40px;
-                height: 40px;
-            }
-
-            .coin-balance {
-                padding: 8px;
-                font-size: 1rem;
-            }
-
-            .coin-balance span {
-                font-size: 3rem;
-            }
-
-            .balance {
-                font-size: 3rem;
-            }
-
-            .stats-box {
-                padding: 10px;
-            }
-
-            .stats-box p, .stats-box span {
-                font-size: 0.8rem;
-            }
-
-            .hamster-frame {
-                width: 250px;
-                height: 250px;
-            }
-
-            .bottom-buttons button {
-                padding: 9px 12px;
-                font-size: 1rem;
-            }
+        /* Links styling */
+        .booster-item a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <div class="title">
+                <h1>IO</h1>
+                <p>play to earn</p>
+            </div>
+            <div class="menu-icon">•••</div>
+        </header>
 
-    <!-- Top Bar Section -->
-    <div class="top-bar">
-        <div class="profile-section">
-            <img src="profile.png" alt="Profile" class="profile-pic">
-        </div>
-        <div class="coin-balance">
-            <p>Per Tap +0.00025</p>
-        </div>
-        <img src="binance.png" alt="Binance" class="binance-logo">
-    </div>
+        <section class="balance-section">
+            <div class="balance">
+                <span class="currency-icon">💰</span>
+                <span class="amount">EARN MORE</span>
+            </div>
+            <p class="boost-info">One Time Tasks</p>
+        </section>
 
-    <!-- Main Section -->
-    <div class="main-section">
-        <div class="balance">join meta max</div>
-        <div class="balance">join meta max</div>
-        <div class="balance">join meta max</div>
-        <div class="balance">join meta max</div>
+        <section class="boosters">
+            <h2>Will Be Enabled Soon</h2>
+            <div class="booster-item">
+                <span class="booster-icon">⚡</span>
+                <div class="booster-info">
+                    <p class="booster-name">Full energy</p>
+                    <p class="booster-status">comming soon</p>
+                </div>
+            </div>
+            <div class="booster-item">
+                <span class="booster-icon">🚀</span>
+                <div class="booster-info">
+                    <p class="booster-name">Turbo</p>
+                    <p class="booster-status">comming soon</p>
+                </div>
+            </div>
+        </section>
 
-    <!-- Bottom Button Section -->
-    <div class="bottom-buttons">
-        <button id="homeButton">Home</button>
-        <button id="earnButton">Earn</button>
-        <button id="roadmapButton">Roadmap</button>
-        <button id="walletButton">wallet</button>
+        <section class="boosters">
+            <h2>THESE ARE DONE ONCE</h2>
+            <div class="booster-item" id="multitap-item">
+                <a id="multitap-link" href="multitap.html">
+                    <span class="booster-icon">👆</span>
+                    <div class="booster-info">
+                        <p class="booster-name">Follow On X</p>
+                        <p class="booster-cost">will be accountable in future</p>
+                    </div>
+                </a>
+            </div>
+            <div class="booster-item" id="energy-limit-item">
+                <a id="energy-limit-link" href="t.me/IOcoinOfficial">
+                    <span class="booster-icon">🔋</span>
+                    <div class="booster-info">
+                        <p class="booster-name">Join IO Channel</p>
+                        <p class="booster-cost">will accountable in future</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-item">Exchange</div>
+            <div class="footer-item">Mine</div>
+            <div class="footer-item">Friends</div>
+            <div class="footer-item">Earn</div>
+            <div class="footer-item">Airdrop</div>
+        </footer>
     </div>
 
     <script>
+        // Check if buttons have been previously clicked and deactivate them
+        window.onload = function() {
+            if (localStorage.getItem("multitapClicked") === "true") {
+                document.getElementById('multitap-item').classList.add('disabled');
+            }
+            if (localStorage.getItem("energyLimitClicked") === "true") {
+                document.getElementById('energy-limit-item').classList.add('disabled');
+            }
+        };
 
-// Add event listener for the Earn button to navigate to earn.html
-document.getElementById('homeButton').addEventListener('click', function() {
-    window.location.href = 'index.html'; // Redirect to earn.html when clicked
-});
-
-        document.getElementById('roadmapButton').addEventListener('click', function() {
-    window.location.href = 'raod.html'; // Redirect to earn.html when clicked
-});
-
-        
-        // Function to get balance from localStorage
-        function getBalance() {
-            let balance = localStorage.getItem('balance');
-            return balance ? parseFloat(balance) : 0; // Default balance if none exists
-        }
-
-        // Function to update balance in localStorage and on the page
-        function updateBalance(amount) {
-            let balance = getBalance();
-            balance += amount;
-            localStorage.setItem('balance', balance.toFixed(2));
-            document.getElementById('balance').textContent = balance.toLocaleString();
-        }
-
-        // Load the initial balance
-        document.getElementById('balance').textContent = getBalance().toLocaleString();
-
-        // Add event listener to the hamster image
-        document.getElementById('hamster').addEventListener('click', function() {
-            updateBalance(0.00025); // Increase balance by 0.00025 when hamster is clicked
+        // Set flag when the multitap button is clicked
+        document.getElementById('multitap-link').addEventListener('click', function() {
+            localStorage.setItem("multitapClicked", "true");
         });
 
-        // Add interactivity to bottom buttons (Optional)
-        document.getElementById('homeButton').addEventListener('click', () => {
-            alert("Home button clicked");
-        });
-
-        document.getElementById('earnButton').addEventListener('click', () => {
-            alert("Earn button clicked");
+        // Set flag when the energy limit button is clicked
+        document.getElementById('energy-limit-link').addEventListener('click', function() {
+            localStorage.setItem("energyLimitClicked", "true");
         });
     </script>
-
 </body>
 </html>
+
