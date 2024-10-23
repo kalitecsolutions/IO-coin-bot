@@ -158,121 +158,109 @@
         margin-left: 0;
     }
 
-        /* Hamster Image Section */
+    /* Hamster Image Section */
+    .hamster-frame {
+        margin-top: 20px;
+        border: 5px solid #ff4757;
+        border-radius: 50%;
+        padding: 10px;
+        width: 200px;
+        height: 200px;
+        margin: auto;
+    }
+
+    .hamster-frame img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+    /* Back Button Section */
+    .back-button {
+        background-color: #ffcc00; /* Golden yellow */
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 30px;
+        border: none;
+        border-radius: 50px;
+        color: black;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    /* Media Queries for Scaling the Layout */
+    @media (max-width: 768px) {
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+        }
+
+        .coin-balance {
+            padding: 10px;
+            font-size: 4rem;
+        }
+
+        .coin-balance span {
+            font-size: 4rem;
+        }
+
+        .balance {
+            font-size: 2rem;
+        }
+
+        .stats-box p, .stats-box span {
+            font-size: 0.9rem;
+        }
+
         .hamster-frame {
-            margin-top: 20px;
-            border: 5px solid #ff4757;
-            border-radius: 50%;
-            padding: 10px;
-            width: 200px;
-            height: 200px;
-            margin: auto;
+            width: 150px;
+            height: 150px;
         }
 
-        .hamster-frame img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-        }
-
-        /* Bottom Section */
-        .bottom-buttons {
-            background-color: rgba(255, 255, 255, 0.1);
-            position: fixed;
-            bottom: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px;
-            border-radius: 50px;
-        }
-
-        .bottom-buttons button {
-            background-color: #ffc107;
-            border: none;
-            border-radius: 50px;
-            padding: 10px 20px;
-            color: black;
+        .back-button {
+            padding: 8px 20px;
             font-size: 1rem;
-            font-weight: bold;
+        }
+    }
+
+    /* For smaller phones */
+    @media (max-width: 576px) {
+        .profile-pic {
+            width: 40px;
+            height: 40px;
         }
 
-        .glow {
-            box-shadow: 0 0 20px #ff4757;
+        .coin-balance {
+            padding: 8px;
+            font-size: 1rem;
         }
 
-        /* Media Queries for Scaling the Layout */
-        @media (max-width: 768px) {
-            .profile-pic {
-                width: 50px;
-                height: 50px;
-            }
-
-            .coin-balance {
-                padding: 10px;
-                font-size: 4rem;
-            }
-
-            .coin-balance span {
-                font-size: 4rem;
-            }
-
-            .balance {
-                font-size: 2rem;
-            }
-
-            .stats-box p, .stats-box span {
-                font-size: 0.9rem;
-            }
-
-            .hamster-frame {
-                width: 150px;
-                height: 150px;
-            }
-
-            .bottom-buttons button {
-                padding: 8px 10px;
-                font-size: 0.9rem;
-            }
+        .coin-balance span {
+            font-size: 3rem;
         }
 
-        /* For smaller phones */
-        @media (max-width: 576px) {
-            .profile-pic {
-                width: 40px;
-                height: 40px;
-            }
+        .balance {
+            font-size: 1rem;
+        }
 
-            .coin-balance {
-                padding: 8px;
-                font-size: 1rem;
-            }
+        .stats-box {
+            padding: 10px;
+        }
 
-            .coin-balance span {
-                font-size: 3rem;
-            }
+        .stats-box p, .stats-box span {
+            font-size: 0.8rem;
+        }
 
-            .balance {
-                font-size: 1rem;
-            }
+        .hamster-frame {
+            width: 250px;
+            height: 250px;
+        }
 
-            .stats-box {
-                padding: 10px;
-            }
-
-            .stats-box p, .stats-box span {
-                font-size: 0.8rem;
-            }
-
-            .hamster-frame {
-                width: 250px;
-                height: 250px;
-            }
-
-            .bottom-buttons button {
-                padding: 9px 12px;
-                font-size: 1rem;
-            }
+        .back-button {
+            padding: 9px 15px;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -289,108 +277,70 @@
         <img src="binance.png" alt="Binance" class="binance-logo">
     </div>
 
-  <!-- Main Section -->
-<div class="main-section">
-    <div class="month-section">
-        <h2>March 2024</h2>
-        <ul>
-            <li>Basic game</li>
-            <li>Mining updates</li>
-            <li>Earn tasks</li>
-        </ul>
+    <!-- Main Section -->
+    <div class="main-section">
+        <div class="month-section">
+            <h2>March 2024</h2>
+            <ul>
+                <li>Basic game</li>
+                <li>Mining updates</li>
+                <li>Earn tasks</li>
+            </ul>
+        </div>
+        
+        <div class="month-section">
+            <h2>April 2024</h2>
+            <ul>
+                <li>Referral system</li>
+                <li>LVL ratings</li>
+                <li>Daily rewards</li>
+            </ul>
+        </div> 
+        
+        <div class="month-section">
+            <h2>May 2024</h2>
+            <ul>
+                <li>Special cards</li>
+                <li>Daily Combo</li>
+                <li>TON blockchain announcement</li>
+            </ul>
+        </div>
+
+        <div class="month-section">
+            <h2>June 2024</h2>
+            <ul>
+                <li>On-chain infrastructure development</li>
+                <li>Wallet in-game implementation</li>
+                <li>Web 3 pre-listing Quest</li>
+            </ul>
+        </div>
+
+        <div class="month-section">
+            <h2>July 2024</h2>
+            <ul>
+                <li>Characters and skins</li>
+                <li>Third-party game integration MVP</li>
+                <li>Tech solution for the largest-ever AirDrop</li>
+            </ul>
+        </div>
+
+        <div class="month-section">
+            <h2>August 2024</h2>
+            <ul>
+                <li>Achievements</li>
+                <li>Gaming platform launch</li>
+            </ul>
+        </div>
     </div>
-    
-<div class="month-section">
-    <h2>April 2024</h2>
-    <ul>
-        <li>Referral system</li>
-        <li>LVL ratings</li>
-        <li>Daily rewards</li>
-    </ul> </div> 
-    
- <div class="month-section">
-    <h2>May 2024</h2>
-    <ul>
-        <li>Special cards</li>
-        <li>Daily Combo</li>
-        <li>TON blockchain announcement</li>
-    </ul></div>
 
-     <div class="month-section">
-    <h2>June 2024</h2>
-    <ul>
-        <li>On-chain infrastructure development</li>
-        <li>Wallet in-game implementation</li>
-        <li>Web 3 pre-listing Quest</li>
-    </ul></div>
-
-     <div class="month-section">
-    <h2>July 2024</h2>
-    <ul>
-        <li>Characters and skins</li>
-        <li>Third-party game integration MVP</li>
-        <li>Tech solution for the largest-ever AirDrop</li>
-    </ul></div>
-
-     <div class="month-section">
-    <h2>August 2024</h2>
-    <ul>
-        <li>Achievements</li>
-        <li>Gaming platform launch</li>
-    </ul></div>
-
-     <div class="month-section>
-    <h2>September 2024</h2>
-    <ul>
-        <li>The Interlude season launch</li>
-        <li>Implementing tech for the largest AirDrop</li>
-        <li>TGE and AirDrop distribution</li>
-        <li>$HMSTR Listing</li>
-    </ul></div>
-</div>
-
-    <!-- Bottom Button Section -->
-    <div class="bottom-buttons">
-        <button id="homeButton">Home</button>
-        <button id="earnButton">Earn</button>
-        <button id="roadmapButton">Roadmap</button>
-        <button id="walletButton">wallet</button>
-    </div>
+    <!-- Back Button -->
+    <button class="back-button" id="backButton">Back</button>
 
     <script>
-
-// Add event listener for the Earn button to navigate to earn.html
-document.getElementById('homeButton').addEventListener('click', function() {
-    window.location.href = 'index.html'; // Redirect to earn.html when clicked
-});
-
-      document.getElementById('earnButton').addEventListener('click', function() {
-    window.location.href = 'earn.html'; // Redirect to earn.html when clicked
-});
-        
-        // Function to get balance from localStorage
-        function getBalance() {
-            let balance = localStorage.getItem('balance');
-            return balance ? parseFloat(balance) : 0; // Default balance if none exists
-        }
-
-        // Function to update balance in localStorage and on the page
-        function updateBalance(amount) {
-            let balance = getBalance();
-            balance += amount;
-            localStorage.setItem('balance', balance.toFixed(2));
-            document.getElementById('balance').textContent = balance.toLocaleString();
-        }
-
-        // Load the initial balance
-        document.getElementById('balance').textContent = getBalance().toLocaleString();
-
-        // Add event listener to the hamster image
-        document.getElementById('hamster').addEventListener('click', function() {
-            updateBalance(0.00025); // Increase balance by 0.00025 when hamster is clicked
+        // Redirect to index.html when "Back" button is clicked
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
         });
-      
     </script>
-
 </body>
 </html>
