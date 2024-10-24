@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IO Coin</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             background-color: #1c1c1c;
@@ -106,6 +107,33 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
+        }
+
+        /* Referral Buttons */
+        .referral-buttons {
+            margin-top: 40px;
+        }
+
+        .referral-btn {
+            background-color: #ffc107;
+            border: none;
+            color: black;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .referral-btn i {
+            margin-right: 10px;
+        }
+
+        .referral-btn:hover {
+            background-color: #e0a800;
         }
 
         /* Bottom Section */
@@ -224,16 +252,18 @@
 
     <!-- Main Section -->
     <div class="main-section">
-       <div class="balance">
-  <a href="https://t.me/IOcoinAnnouncements" target="_blank">Join Our Channel</a>
-</div>
 
-<div class="balance">
-  <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank">join meta max</a>
-</div>
-
-
-
+        <!-- Referral Buttons -->
+        <div class="referral-buttons">
+            <a href="https://t.me/IOcoinAnnouncements" target="_blank" class="referral-btn">
+                <i class="fab fa-telegram-plane"></i> Join Our Telegram Channel
+            </a>
+            <a href="https://chat.whatsapp.com/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
+                <i class="fab fa-whatsapp"></i> Join Our WhatsApp Channel
+            </a>
+        </div>
+        
+    </div>
 
     <!-- Bottom Button Section -->
     <div class="bottom-buttons">
@@ -267,7 +297,6 @@
         });
 
         // Add interactivity to bottom buttons (Optional)
-        
         document.getElementById('homeButton').addEventListener('click', function() {
             window.location.href = 'index.html';
         });
@@ -276,9 +305,10 @@
             window.location.href = 'earn.html';
         });
 
-        document.getElementById('raodmapButton').addEventListener('click', function() {
-            window.location.href = 'raod.html';
+        document.getElementById('roadmapButton').addEventListener('click', function() {
+            window.location.href = 'roadmap.html';
         });
+
         document.getElementById('walletButton').addEventListener('click', function() {
             window.location.href = 'wallet.html';
         });
