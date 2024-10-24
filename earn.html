@@ -92,21 +92,32 @@
             font-weight: bold;
         }
 
-        /* Hamster Image Section */
-        .hamster-frame {
-            margin-top: 20px;
-            border: 5px solid #ff4757;
-            border-radius: 50%;
-            padding: 10px;
-            width: 200px;
-            height: 200px;
-            margin: auto;
+        /* New button styling */
+        .share-btn {
+            background-color: #007aff;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
         }
 
-        .hamster-frame img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
+        .share-btn:hover {
+            background-color: #005bb5;
+        }
+
+        /* Output section for the link */
+        .link-output {
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+        }
+
+        .link-output a {
+            color: #007aff;
+            font-weight: bold;
         }
 
         /* Referral Buttons */
@@ -261,22 +272,25 @@
             <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
                 <i class="fab fa-whatsapp"></i> Join Our WhatsApp Channel
             </a>
-        </div>
-
-        <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
+            <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
                 <i class="fab fa-twitter"></i> Follow Us On Twitter
             </a>
-        </div>
-
-    <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
-                <i class="fab fa-youtube"></i> Follow Us On Youtube
-        </div>
-
-        <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
+             <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
+                <i class="fab fa-youtube"></i> Follow Us On Youtube</a>
+             <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
                 <i class="fab fa-tiktok"></i> Follow Us On Tiktok
             </a>
+            
         </div>
         
+    </div>
+     <!-- Share Button -->
+    <button id="share-btn" class="share-btn">INVITE TO EARN</button>
+
+    <!-- Link Output Section -->
+    <div id="link-output" class="link-output">
+        <p>Share this link: <a id="telegram-link" href="https://t.me/IOCoin_bot" target="_blank">https://t.me/IOCoin_bot</a></p>
+        <button id="copy-link" class="btn">Copy Link</button>
     </div>
 
     <!-- Bottom Button Section -->
@@ -288,26 +302,22 @@
     </div>
 
     <script>
-        // Function to get balance from localStorage
-        function getBalance() {
-            let balance = localStorage.getItem('balance');
-            return balance ? parseFloat(balance) : 0; // Default balance if none exists
-        }
+       document.addEventListener('DOMContentLoaded', function () {
+            const shareBtn = document.getElementById('share-btn');
+            const linkOutput = document.getElementById('link-output');
+            const copyLinkBtn = document.getElementById('copy-link');
 
-        // Function to update balance in localStorage and on the page
-        function updateBalance(amount) {
-            let balance = getBalance();
-            balance += amount;
-            localStorage.setItem('balance', balance.toFixed(2));
-            document.getElementById('balance').textContent = balance.toLocaleString();
-        }
+            // Show link when the share button is clicked
+            shareBtn.addEventListener('click', function () {
+                linkOutput.style.display = 'block'; // Show the link output section
+            });
 
-        // Load the initial balance
-        document.getElementById('balance').textContent = getBalance().toLocaleString();
-
-        // Add event listener to the hamster image
-        document.getElementById('hamster').addEventListener('click', function() {
-            updateBalance(0.00025); // Increase balance by 0.00025 when hamster is clicked
+            // Copy link functionality
+            copyLinkBtn.addEventListener('click', function () {
+                const telegramLink = document.getElementById('telegram-link').href;
+                navigator.clipboard.writeText(telegramLink);
+                alert('Link copied to clipboard!'); // Alert user
+            });
         });
 
         // Add interactivity to bottom buttons (Optional)
