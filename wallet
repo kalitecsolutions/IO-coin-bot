@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .wallet-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            color: #007aff;
+        }
+
+        .wallet-label {
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .wallet-form {
+            margin-bottom: 20px;
+        }
+
+        .wallet-form input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: #007aff;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #005bb5;
+        }
+
+        .action-output {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="wallet-container">
+        <h1>Tonkeeper Wallet</h1>
+        <div id="wallet-address-label" class="wallet-label"></div>
+        
+        <div id="wallet-form" class="wallet-form">
+            <label for="wallet-address">Enter Wallet Address:</label>
+            <input type="text" id="wallet-address" placeholder="Wallet Address">
+            <button id="submit-wallet" class="btn">Submit</button>
+        </div>
+
+        <div class="wallet-actions">
+            <button id="withdraw-btn" class="btn">Withdraw</button>
+            <button id="deposit-btn" class="btn">Deposit</button>
+        </div>
+
+        <div id="action-output" class="action-output"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const walletLabel = document.getElementById('wallet-address-label');
+            const walletForm = document.getElementById('wallet-form');
+            const walletInput = document.getElementById('wallet-address');
+            const submitWallet = document.getElementById('submit-wallet');
+            const withdrawBtn = document.getElementById('withdraw-btn');
+            const depositBtn = document.getElementById('deposit-btn');
+            const actionOutput = document.getElementById('action-output');
+
+            // Check if the wallet address is already stored
+            const storedWallet = localStorage.getItem('walletAddress');
+            if (storedWallet) {
+                walletLabel.textContent = `Wallet Address: ${storedWallet}`;
+                walletForm.style.display = 'none';
+            }
+
+            // Store wallet address when submitted
+            submitWallet.addEventListener('click', function () {
+                const walletAddress = walletInput.value.trim();
+                if (walletAddress) {
+                    localStorage.setItem('walletAddress', walletAddress);
+                    walletLabel.textContent = `Wallet Address: ${walletAddress}`;
+                    walletForm.style.display = 'none';
+                }
+            });
+
+            // Withdraw button
+            withdrawBtn.addEventListener('click', function () {
+                actionOutput.textContent = 'Coming soon...';
+            });
+
+            // Deposit button
+            depositBtn.addEventListener('click', function () {
+                const depositCode = 'hjhk2hkjhi42i';
+                actionOutput.innerHTML = `Deposit Code: ${depositCode} <button id="copy-btn" class="btn">Copy</button>`;
+                
+                const copyBtn = document.getElementById('copy-btn');
+                copyBtn.addEventListener('click', function () {
+                    navigator.clipboard.writeText(depositCode);
+                    actionOutput.innerHTML = 'Deposit Code copied!';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
