@@ -218,6 +218,40 @@
                 });
             });
         });
+         // Function to get balance from localStorage
+        function getBalance() {
+            let balance = localStorage.getItem('balance');
+            return balance ? parseFloat(balance) : 0; // Default balance if none exists
+        }
+
+        // Function to update balance in localStorage and on the page
+        function updateBalance(amount) {
+            let balance = getBalance();
+            balance += amount;
+            localStorage.setItem('balance', balance.toFixed(2));
+            document.getElementById('balance').textContent = balance.toLocaleString();
+        }
+
+        // Load the initial balance
+        document.getElementById('balance').textContent = getBalance().toLocaleString();
+
+        // Add event listener to the hamster image
+        document.getElementById('hamster').addEventListener('click', function() {
+            updateBalance(0.00025); // Increase balance by 0.00025 when hamster is clicked
+        });
+
+        // Add interactivity to bottom buttons (Optional)
+        document.getElementById('homeButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('earnButton').addEventListener('click', function() {
+            window.location.href = 'earn.html';
+        });
+
+        document.getElementById('roadmapButton').addEventListener('click', function() {
+            window.location.href = 'roadmap.html';
+        });
     </script>
 </body>
 </html>
