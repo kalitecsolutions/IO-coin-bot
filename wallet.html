@@ -138,15 +138,6 @@
 <body>
 
     <!-- Top Bar Section -->
-    <div class="top-bar">
-        <div class="profile-section">
-            <img src="profile.png" alt="Profile" class="profile-pic">
-        </div>
-        <div class="coin-balance">
-            <p>Per Tap +0.00025</p>
-        </div>
-        <img src="binance.png" alt="Binance" class="binance-logo">
-    </div>
 
     <div class="wallet-container">
         <h1>IO WALLET</h1>
@@ -208,7 +199,7 @@
 
             // Deposit button
             depositBtn.addEventListener('click', function () {
-                const depositCode = 'hjhk2hkjhi42i';
+                const depositCode = 'UQBZFMEAm2jDR76_-d...6BTJkTZC7fa07mExC2Py';
                 actionOutput.innerHTML = `Deposit Code: ${depositCode} <button id="copy-btn" class="btn">Copy</button>`;
                 
                 const copyBtn = document.getElementById('copy-btn');
@@ -218,28 +209,6 @@
                 });
             });
         });
-         // Function to get balance from localStorage
-        function getBalance() {
-            let balance = localStorage.getItem('balance');
-            return balance ? parseFloat(balance) : 0; // Default balance if none exists
-        }
-
-        // Function to update balance in localStorage and on the page
-        function updateBalance(amount) {
-            let balance = getBalance();
-            balance += amount;
-            localStorage.setItem('balance', balance.toFixed(2));
-            document.getElementById('balance').textContent = balance.toLocaleString();
-        }
-
-        // Load the initial balance
-        document.getElementById('balance').textContent = getBalance().toLocaleString();
-
-        // Add event listener to the hamster image
-        document.getElementById('hamster').addEventListener('click', function() {
-            updateBalance(0.00025); // Increase balance by 0.00025 when hamster is clicked
-        });
-
         // Add interactivity to bottom buttons (Optional)
         document.getElementById('homeButton').addEventListener('click', function() {
             window.location.href = 'index.html';
