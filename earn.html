@@ -68,11 +68,32 @@
         }
 
         /* New button styling */
-          #message {
+        .share-btn {
+            background-color: #007aff;
+            color: white;
+            padding: 7px 14px;
+            margin: 10px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .share-btn:hover {
+            background-color: #005bb5;
+        }
+
+        /* Output section for the link */
+        .link-output {
+            margin-top: 20px;
             display: none;
-            margin-top: 10px;
-            color: green;
-        
+            text-align: center;
+        }
+
+        .link-output a {
+            color: #007aff;
+            font-weight: bold;
+        }
 
         /* Referral Buttons */
         .referral-buttons {
@@ -200,6 +221,13 @@
                 font-size: 1rem;
             }
         }
+
+        /* Message Display Style */
+        #message {
+            margin-top: 10px;
+            color: green;
+            display: none; /* Initially hidden */
+        }
     </style>
 </head>
 <body>
@@ -229,17 +257,22 @@
             <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
                 <i class="fab fa-twitter"></i> Follow Us On Twitter
             </a>
-             <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
-                <i class="fab fa-youtube"></i> Follow Us On Youtube</a>
-             <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
-                <i class="fab fa-tiktok"></i> Follow Us On Tiktok
+            <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
+                <i class="fab fa-youtube"></i> Follow Us On YouTube
             </a>
-            
+            <a href="https://chat.whatsapp.com/channel/0029VasYfhG6xCSJ0CUSBuOy" target="_blank" class="referral-btn">
+                <i class="fab fa-tiktok"></i> Follow Us On TikTok
+            </a>
         </div>
         
     </div>
-    <button id="share-btn" class="share-btn">INVITE TO EARN</button> <!-- Share Button -->
-    <div id="message">Link copied successfully!</div> <!-- Message Display -->
+
+    <!-- Link Output Section -->
+    <div id="link-output" class="link-output">
+        <button id="share-btn" class="share-btn">INVITE TO EARN</button>      <!-- Share Button -->
+        <p>Share this link: <a id="telegram-link" href="https://t.me/IOCoinbot_bot" target="_blank">https://t.me/IOCoinbot_bot</a></p>
+        <div id="message">Link copied successfully!</div> <!-- Message Display -->
+    </div>
 
     <!-- Bottom Button Section -->
     <div class="bottom-buttons">
@@ -250,39 +283,28 @@
     </div>
 
     <script>
-       document.getElementById('share-btn').addEventListener('click', function() {
-            const link = "https://t.me/IOCoinbot_bot";
-            
-            // Copy the link to the clipboard
-            navigator.clipboard.writeText(link).then(() => {
-                // Display the success message
-                const messageElement = document.getElementById('message');
-                messageElement.style.display = 'block';
-                
-                // Optionally hide the message after a few seconds
-                setTimeout(() => {
-                    messageElement.style.display = 'none';
-                }, 3000);
-            }).catch(err => {
-                console.error('Error copying text: ', err);
+        document.addEventListener('DOMContentLoaded', function () {
+            const shareBtn = document.getElementById('share-btn');
+            const linkOutput = document.getElementById('link-output');
+            const messageElement = document.getElementById('message');
+
+            // Show link when the share button is clicked
+            shareBtn.addEventListener('click', function () {
+                linkOutput.style.display = 'block'; // Show the link output section
             });
-        });
 
-        // Add interactivity to bottom buttons (Optional)
-        document.getElementById('homeButton').addEventListener('click', function() {
-            window.location.href = 'index.html';
-        });
-
-        document.getElementById('earnButton').addEventListener('click', function() {
-            window.location.href = 'earn.html';
-        });
-
-        document.getElementById('roadmapButton').addEventListener('click', function() {
-            window.location.href = 'roadmap.html';
-        });
-
-        document.getElementById('walletButton').addEventListener('click', function() {
-            window.location.href = 'wallet.html';
+            // Copy link functionality
+            shareBtn.addEventListener('click', function () {
+                const telegramLink = document.getElementById('telegram-link').href; // Get the link
+                navigator.clipboard.writeText(telegramLink) // Copy the link to clipboard
+                    .then(() => {
+                        messageElement.style.display = 'block'; // Show success message
+                        setTimeout(() => {
+                            messageElement.style.display = 'none'; // Hide message after 2 seconds
+                        }, 2000);
+                    })
+                    .catch(err => console.error('Failed to copy: ', err));
+            });
         });
     </script>
 
