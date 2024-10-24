@@ -68,32 +68,11 @@
         }
 
         /* New button styling */
-        .share-btn {
-            background-color: #007aff;
-            color: white;
-            padding: 7px 14px;
-            margin: 10px;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .share-btn:hover {
-            background-color: #005bb5;
-        }
-
-        /* Output section for the link */
-        .link-output {
-            margin-top: 20px;
+          #message {
             display: none;
-            text-align: center;
-        }
-
-        .link-output a {
-            color: #007aff;
-            font-weight: bold;
-        }
+            margin-top: 10px;
+            color: green;
+        
 
         /* Referral Buttons */
         .referral-buttons {
@@ -259,13 +238,8 @@
         </div>
         
     </div>
-
-    <!-- Link Output Section -->
-    <div id="link-output" class="link-output">
-        <button id="share-btn" class="share-btn">INVITE TO EARN</button>      <!-- Share Button -->
-        <p>Share this link: <a id="telegram-link" href="https://t.me/IOCoinbot_bot" target="_blank">https://t.me/IOCoin_bot</a></p>
-        <button id="copy-link" class="share-btn">Copy Link</button>
-    </div>
+    <button id="share-btn" class="share-btn">INVITE TO EARN</button> <!-- Share Button -->
+    <div id="message">Link copied successfully!</div> <!-- Message Display -->
 
     <!-- Bottom Button Section -->
     <div class="bottom-buttons">
@@ -276,21 +250,21 @@
     </div>
 
     <script>
-       document.addEventListener('DOMContentLoaded', function () {
-            const shareBtn = document.getElementById('share-btn');
-            const linkOutput = document.getElementById('link-output');
-            const copyLinkBtn = document.getElementById('copy-link');
-
-            // Show link when the share button is clicked
-            shareBtn.addEventListener('click', function () {
-                linkOutput.style.display = 'block'; // Show the link output section
-            });
-
-            // Copy link functionality
-            copyLinkBtn.addEventListener('click', function () {
-                const telegramLink = document.getElementById('telegram-link').href;
-                navigator.clipboard.writeText(telegramLink);
-                alert('Link copied to clipboard!'); // Alert user
+       document.getElementById('share-btn').addEventListener('click', function() {
+            const link = "https://t.me/IOCoinbot_bot";
+            
+            // Copy the link to the clipboard
+            navigator.clipboard.writeText(link).then(() => {
+                // Display the success message
+                const messageElement = document.getElementById('message');
+                messageElement.style.display = 'block';
+                
+                // Optionally hide the message after a few seconds
+                setTimeout(() => {
+                    messageElement.style.display = 'none';
+                }, 3000);
+            }).catch(err => {
+                console.error('Error copying text: ', err);
             });
         });
 
